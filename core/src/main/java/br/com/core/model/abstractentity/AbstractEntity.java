@@ -1,4 +1,4 @@
-package br.com.course.entities.abstractentity;
+package br.com.core.model.abstractentity;
 
 import java.io.Serializable;
 

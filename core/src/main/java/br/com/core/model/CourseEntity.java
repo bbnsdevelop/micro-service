@@ -1,18 +1,11 @@
-package br.com.course.entities;
+package br.com.core.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import br.com.course.entities.abstractentity.AbstractEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import br.com.core.model.abstractentity.AbstractEntity;
 
 @Entity
 @Table(name ="course")

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.course.entities.CourseEntity;
+import br.com.core.model.CourseEntity;
 import br.com.course.service.CourseService;
 
 @RestController

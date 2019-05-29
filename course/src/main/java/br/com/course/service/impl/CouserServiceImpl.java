@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import br.com.course.entities.CourseEntity;
-import br.com.course.repository.CourseRepository;
+import br.com.core.model.CourseEntity;
+import br.com.core.repository.CourseRepository;
 import br.com.course.service.CourseService;
 
 /**

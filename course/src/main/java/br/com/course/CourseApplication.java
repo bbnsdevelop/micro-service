@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EntityScan({"br.com.core.model"})
-@EnableJpaRepositories({"br.com.core.repository."})
+@EnableJpaRepositories({"br.com.core.repository"})
 public class CourseApplication {
 
 	public static void main(String[] args) {

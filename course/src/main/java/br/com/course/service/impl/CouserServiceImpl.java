@@ -23,7 +23,7 @@ public class CouserServiceImpl implements CourseService {
 
 	@Override
     public Iterable<CourseEntity> list(Pageable pageable) {
-		create();
+		//create();
         log.info("Listing all courses");
         return courseRepository.findAll(pageable);
     }

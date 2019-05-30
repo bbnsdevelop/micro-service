@@ -12,7 +12,7 @@ import br.com.core.model.CourseEntity;
 import br.com.course.service.CourseService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 public class CourseController {
 	
 	@Autowired

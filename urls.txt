@@ -1,0 +1,5 @@
+#gateway
+localhost:8080/gateway/course/api/v1/course
+
+#micro
+localhost:8082/api/v1/course

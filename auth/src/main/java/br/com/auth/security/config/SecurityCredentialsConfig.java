@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -36,9 +37,16 @@ public class SecurityCredentialsConfig extends WebSecurityConfigurerAdapter {
 			.and()
 				.exceptionHandling().authenticationEntryPoint((req, resp, e) -> resp.sendError(HttpServletResponse.SC_UNAUTHORIZED))
 			.and()
-				.addFilter(new JwtUsernameAndaPasswordAuthenticationFilter())
+				.addFilter(new JwtUsernameAndaPasswordAuthenticationFilter(authenticationManager(), jWTConfiguration))
 				.authorizeRequests()
-				.antMatchers(jWTConfiguration.getLoginUrl()).permitAll()
+				.antMatchers(HttpMethod.GET, 
+						 "/",
+						 "/*.html",
+						 "/favicon.ico",
+						 "/**/*.html",
+						 "/**/*.css",
+						 "/**/*.js").permitAll()
+				.antMatchers(jWTConfiguration.getLoginUrl()+"/**").permitAll()
 				.antMatchers("/course/admin/**").hasRole("ADMIN")
 				.anyRequest().authenticated();
 					

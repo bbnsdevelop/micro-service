@@ -46,13 +46,15 @@ public class JWTConfiguration {
 	}
 
 
-	private static class Header{
+	public static class Header{
 		private String name = "Authorization";
 		private String prefix = "Bearer ";
 		
+		@SuppressWarnings("unused")
 		public String getName() {
 			return name;
 		}
+		@SuppressWarnings("unused")
 		public String getPrefix() {
 			return prefix;
 		}

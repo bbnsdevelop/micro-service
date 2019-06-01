@@ -19,9 +19,10 @@
 		<module>course</module>
 		<module>core</module>
 	</modules>
-	
+
 	<properties>
 		<spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+		<nimbus-jose-version>7.0</nimbus-jose-version>
 	</properties>
 
 
@@ -77,14 +78,21 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>com.nimbusds</groupId>
+			<artifactId>nimbus-jose-jwt</artifactId>
+			<version>${nimbus-jose-version}</version>
+		</dependency>
+
+
 	</dependencies>
-	
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>

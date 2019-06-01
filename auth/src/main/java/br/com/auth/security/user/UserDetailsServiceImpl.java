@@ -27,17 +27,22 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String username) {
 		log.info("Searching in the DB the user by username -> {}", username);
-		ApplicationUser applicattionUser = this.applicationUserRepository.findByUsername(username);
-		log.info("ApplicationUser found-> {}", applicattionUser);
-		if(applicattionUser == null) {
+		ApplicationUser applicationUser = this.applicationUserRepository.findByUsername(username);
+		log.info("ApplicationUser found-> {}", applicationUser);
+		if(applicationUser == null) {
 			throw new UsernameNotFoundException(String.format("Application user '%s' not found", username));
 		}
-		return new CustomUserDetails(applicattionUser);
+		return new CustomUserDetails(applicationUser);
 	}
 	
 	public static final class CustomUserDetails extends ApplicationUser implements  UserDetails {
+		private String username;
+		private String password;
+		
 		public CustomUserDetails(ApplicationUser applicationUser) {
 			super(applicationUser);
+			this.password = applicationUser.getPassword();
+			this.username = applicationUser.getUsername();
 		}
 
 		private static final long serialVersionUID = 1L;
@@ -49,12 +54,12 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 
 		@Override
 		public String getPassword() {
-			return null;
+			return password;
 		}
 
 		@Override
 		public String getUsername() {
-			return null;
+			return username;
 		}
 
 		@Override

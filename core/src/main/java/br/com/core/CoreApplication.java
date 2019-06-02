@@ -18,7 +18,7 @@ public class CoreApplication {
 		SpringApplication.run(CoreApplication.class, args);
 	}
 	
-	@Bean
+	/*@Bean
 	public void saveUser() {
 		ApplicationUser user = new ApplicationUser();
 		user.setId(1000L);
@@ -26,7 +26,7 @@ public class CoreApplication {
 		user.setUsername("snow");
 		user.setRole("ADMIN");
 		this.applicationUserRepository.save(user);
-	}
+	}*/
 	/*@Bean
 	public void delete() {
 		this.applicationUserRepository.deleteAll();

@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import br.com.core.model.abstractentity.AbstractEntity;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 

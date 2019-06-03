@@ -22,7 +22,7 @@ public class SecurityCredentialsConfig extends SecurityTokenConfig {
 	@Autowired
 	private TokenCreator tokenCreator;
 	
-	public SecurityCredentialsConfig(JWTConfiguration jwtConfiguration, @Qualifier("userDetailsServiceImpl")  UserDetailsService userDetailsService, TokenCreator tokenCreator) {
+	public SecurityCredentialsConfig(JWTConfiguration jwtConfiguration, UserDetailsService userDetailsService, TokenCreator tokenCreator) {
 		super(jwtConfiguration);
 		this.userDetailsService = userDetailsService;
 		this.tokenCreator = tokenCreator;
@@ -36,7 +36,8 @@ public class SecurityCredentialsConfig extends SecurityTokenConfig {
 		super.configure(http);
 
 	}
-
+	
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(this.userDetailsService).passwordEncoder(passwordEncoder());

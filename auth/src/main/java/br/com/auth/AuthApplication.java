@@ -15,7 +15,6 @@ import br.com.core.property.JWTConfiguration;
 @EntityScan({"br.com.core.model"})
 @EnableJpaRepositories({"br.com.core.repository"})
 @EnableEurekaClient
-@ComponentScan("br.com.microservices")
 public class AuthApplication {
 
 	public static void main(String[] args) {

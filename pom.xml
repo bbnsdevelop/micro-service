@@ -24,10 +24,18 @@
 	<properties>
 		<spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
 		<nimbus-jose-version>7.0</nimbus-jose-version>
+		<commons-lang-version>3.8.1</commons-lang-version>
 	</properties>
 
 
 	<dependencies>
+
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang-version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

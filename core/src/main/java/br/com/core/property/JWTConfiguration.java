@@ -17,7 +17,7 @@ public class JWTConfiguration {
 	private Header header = new Header();
 	
 	private int expiration = 3600;	
-	private String privateKey = "XJ7jyHG4y39ZGmQVxygPvDtv16AMZROK";
+	private String privateKey = "Bx38Wr4yLg0PmidXqx2dHBXjfemIfo4iAUechE3sC3I=";
 	private String type = "encrypted";
 	
 		

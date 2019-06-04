@@ -26,10 +26,10 @@ public class JwtTokenAuthorizationFilter extends OncePerRequestFilter {
 	private static final Logger log = LoggerFactory.getLogger(JwtTokenAuthorizationFilter.class);
 	
 	@Autowired
-	private JWTConfiguration jWTConfiguration;
+	protected JWTConfiguration jWTConfiguration;
 	
 	@Autowired
-	private TokenConverter tokenConverter;
+	protected TokenConverter tokenConverter;
 
 	public JwtTokenAuthorizationFilter(JWTConfiguration jWTConfiguration, TokenConverter tokenConverter) {
 		this.jWTConfiguration = jWTConfiguration;
@@ -51,7 +51,7 @@ public class JwtTokenAuthorizationFilter extends OncePerRequestFilter {
 		filterChain.doFilter(request, response);
 	}
 	
-	private SignedJWT drecyptValidating(String encryptToken) {
+	protected SignedJWT drecyptValidating(String encryptToken) {
 		String signedToken = null;
 		try {
 			signedToken = this.tokenConverter.decryptToken(encryptToken);
@@ -63,7 +63,7 @@ public class JwtTokenAuthorizationFilter extends OncePerRequestFilter {
 		return null;
 	}
 	
-	private SignedJWT validate(String signedToken) {
+	protected SignedJWT validate(String signedToken) {
 		tokenConverter.validateTokenSignature(signedToken);
 		try {
 			return SignedJWT.parse(signedToken);

@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.stereotype.Component;
 import org.springframework.web.cors.CorsConfiguration;
 
 import br.com.core.property.JWTConfiguration;
@@ -35,7 +34,7 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(jwtConfiguration.getLoginUrl()).permitAll()
-                .antMatchers("/course/admin/**").hasRole("ADMIN")
+                .antMatchers("/course/api/v1/course/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated();
     }
 

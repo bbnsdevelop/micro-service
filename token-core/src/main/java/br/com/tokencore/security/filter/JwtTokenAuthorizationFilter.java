@@ -26,10 +26,10 @@ public class JwtTokenAuthorizationFilter extends OncePerRequestFilter {
 	private static final Logger log = LoggerFactory.getLogger(JwtTokenAuthorizationFilter.class);
 	
 	@Autowired
-	private JWTConfiguration jWTConfiguration;
+	protected JWTConfiguration jWTConfiguration;
 	
 	@Autowired
-	private TokenConverter tokenConverter;
+	protected TokenConverter tokenConverter;
 
 	public JwtTokenAuthorizationFilter(JWTConfiguration jWTConfiguration, TokenConverter tokenConverter) {
 		this.jWTConfiguration = jWTConfiguration;
@@ -41,13 +41,13 @@ public class JwtTokenAuthorizationFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 		
 		String header = request.getHeader(this.jWTConfiguration.getHeader().getName());
-		if(header != null | !header.startsWith(this.jWTConfiguration.getHeader().getName())) {
+		if (header == null || !header.startsWith(jWTConfiguration.getHeader().getPrefix())) {
 			filterChain.doFilter(request, response);
 			return;
 		}
 		String token = header.replace(this.jWTConfiguration.getHeader().getPrefix(), "").trim();
 		
-		SecurityContextUtil.SetSecurityContext(StringUtils.equalsAnyIgnoreCase("signed", this.jWTConfiguration.getType())? validate(token) : drecyptValidating(token) );
+		SecurityContextUtil.setSecurityContext(StringUtils.equalsAnyIgnoreCase("signed", this.jWTConfiguration.getType())? validate(token) : drecyptValidating(token) );
 		filterChain.doFilter(request, response);
 	}
 	

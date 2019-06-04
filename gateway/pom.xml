@@ -18,12 +18,26 @@
 	
 	<properties>
 		<java.version>1.8</java.version>
+		<token-core-version>0.0.1-SNAPSHOT</token-core-version>
+		<core-version>1.0-SNAPSHOT</core-version>
 	</properties>
 
 	<dependencies>		
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>br.com.microservices</groupId>
+			<artifactId>token-core</artifactId>
+			<version>${token-core-version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>br.com.microservices</groupId>
+			<artifactId>core</artifactId>
+			<version>${core-version}</version>
 		</dependency>
 
 	</dependencies>

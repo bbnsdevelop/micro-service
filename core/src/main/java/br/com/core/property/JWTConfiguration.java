@@ -8,21 +8,26 @@ import lombok.ToString;
 
 @Configuration
 @ToString
-@ConfigurationProperties(prefix ="jwt.config")
+@ConfigurationProperties( prefix = "jwt.config")
 public class JWTConfiguration {
 
-	private String loginUrl = "/login";
+	private String loginUrl = "/login/**";
 	
 	@NestedConfigurationProperty
 	private Header header = new Header();
 	
 	private int expiration = 3600;	
-	private String privateKey = "Bx38Wr4yLg0PmidXqx2dHBXjfemIfo4iAUechE3sC3I=";
+	private String privateKey = "jVAF6t5H79q0CqXYztQmlGjSeZJiiOd9";
 	private String type = "encrypted";
 	
-		
+
 	public String getLoginUrl() {
 		return loginUrl;
+	}
+
+
+	public void setLoginUrl(String loginUrl) {
+		this.loginUrl = loginUrl;
 	}
 
 
@@ -31,8 +36,18 @@ public class JWTConfiguration {
 	}
 
 
+	public void setHeader(Header header) {
+		this.header = header;
+	}
+
+
 	public int getExpiration() {
 		return expiration;
+	}
+
+
+	public void setExpiration(int expiration) {
+		this.expiration = expiration;
 	}
 
 
@@ -41,23 +56,41 @@ public class JWTConfiguration {
 	}
 
 
+
+
+	public void setPrivateKey(String privateKey) {
+		this.privateKey = privateKey;
+	}
+
+
 	public String getType() {
 		return type;
 	}
 
 
-	public static class Header{
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
+	public static class Header {
 		private String name = "Authorization";
 		private String prefix = "Bearer ";
 		
-		@SuppressWarnings("unused")
 		public String getName() {
 			return name;
 		}
-		@SuppressWarnings("unused")
+		public void setName(String name) {
+			this.name = name;
+		}
 		public String getPrefix() {
 			return prefix;
 		}
+		public void setPrefix(String prefix) {
+			this.prefix = prefix;
+		}
+		
+		
 	}
 	
 	

@@ -41,17 +41,17 @@ public class JwtTokenAuthorizationFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 		
 		String header = request.getHeader(this.jWTConfiguration.getHeader().getName());
-		if(header != null | !header.startsWith(this.jWTConfiguration.getHeader().getName())) {
+		if (header == null || !header.startsWith(jWTConfiguration.getHeader().getPrefix())) {
 			filterChain.doFilter(request, response);
 			return;
 		}
 		String token = header.replace(this.jWTConfiguration.getHeader().getPrefix(), "").trim();
 		
-		SecurityContextUtil.SetSecurityContext(StringUtils.equalsAnyIgnoreCase("signed", this.jWTConfiguration.getType())? validate(token) : drecyptValidating(token) );
+		SecurityContextUtil.setSecurityContext(StringUtils.equalsAnyIgnoreCase("signed", this.jWTConfiguration.getType())? validate(token) : drecyptValidating(token) );
 		filterChain.doFilter(request, response);
 	}
 	
-	protected SignedJWT drecyptValidating(String encryptToken) {
+	private SignedJWT drecyptValidating(String encryptToken) {
 		String signedToken = null;
 		try {
 			signedToken = this.tokenConverter.decryptToken(encryptToken);
@@ -63,7 +63,7 @@ public class JwtTokenAuthorizationFilter extends OncePerRequestFilter {
 		return null;
 	}
 	
-	protected SignedJWT validate(String signedToken) {
+	private SignedJWT validate(String signedToken) {
 		tokenConverter.validateTokenSignature(signedToken);
 		try {
 			return SignedJWT.parse(signedToken);

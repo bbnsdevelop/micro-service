@@ -23,7 +23,7 @@ public class SecurityContextUtil {
 		
 	}
 	
-	public static void SetSecurityContext(SignedJWT signedJWT) {
+	public static void setSecurityContext(SignedJWT signedJWT) {
 		
 		try {
 			JWTClaimsSet jwtClaimsSet = signedJWT.getJWTClaimsSet();

@@ -12,13 +12,13 @@ import br.com.core.model.CourseEntity;
 import br.com.course.service.CourseService;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/courses")
 public class CourseController {
 	
 	@Autowired
 	private CourseService service;
 
-	@GetMapping("/course")
+	@GetMapping
 	public ResponseEntity<Iterable<CourseEntity>> getListCourse(Pageable pageable){
 		return ResponseEntity.status(HttpStatus.OK).body(this.service.list(pageable));
 	}

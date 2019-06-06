@@ -24,7 +24,7 @@ public class SecurityContextUtil {
 	}
 	
 	public static void setSecurityContext(SignedJWT signedJWT) {
-		
+		log.info("starting method setSecurityContext(SignedJWT signedJWT)");
 		try {
 			JWTClaimsSet jwtClaimsSet = signedJWT.getJWTClaimsSet();
 			String username = jwtClaimsSet.getSubject();
@@ -47,12 +47,6 @@ public class SecurityContextUtil {
 		
 		
 	}
-	/*
-	 * auth.getAuthorities()
-                        .stream()
-                        .map(GrantedAuthority::getAuthority)
-                        .collect(toList())
-	 * */
 	
 	private static List<SimpleGrantedAuthority> createAuthorities(List<String> authorities) {
 		return authorities.stream()

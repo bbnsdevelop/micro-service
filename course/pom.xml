@@ -18,13 +18,22 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<token-core-version>0.0.1-SNAPSHOT</token-core-version>
+		<core-version>1.0-SNAPSHOT</core-version>
 	</properties>
 
 	<dependencies>
+		
+		<dependency>
+			<groupId>br.com.microservices</groupId>
+			<artifactId>token-core</artifactId>
+			<version>${token-core-version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>br.com.microservices</groupId>
 			<artifactId>core</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>${core-version}</version>
 		</dependency>
 	</dependencies>
 

@@ -42,32 +42,38 @@ public class JwtTokenAuthorizationFilter extends OncePerRequestFilter {
 		
 		String header = request.getHeader(this.jWTConfiguration.getHeader().getName());
 		if (header == null || !header.startsWith(jWTConfiguration.getHeader().getPrefix())) {
+			log.info("verify if header is null on request");
 			filterChain.doFilter(request, response);
 			return;
 		}
 		String token = header.replace(this.jWTConfiguration.getHeader().getPrefix(), "").trim();
+		log.info("get token on header");
 		
 		SecurityContextUtil.setSecurityContext(StringUtils.equalsAnyIgnoreCase("signed", this.jWTConfiguration.getType())? validate(token) : drecyptValidating(token) );
 		filterChain.doFilter(request, response);
 	}
 	
 	private SignedJWT drecyptValidating(String encryptToken) {
+		log.info("decrypt and validating token");
 		String signedToken = null;
 		try {
 			signedToken = this.tokenConverter.decryptToken(encryptToken);
 			this.tokenConverter.validateTokenSignature(signedToken);
 			return SignedJWT.parse(signedToken);
 		} catch (ParseException e) {
+			log.error("Error on decrypt token and validating ------> {}", e.getCause());
 			e.printStackTrace();
 		}
 		return null;
 	}
 	
 	private SignedJWT validate(String signedToken) {
+		log.info("validating token is Signature");
 		tokenConverter.validateTokenSignature(signedToken);
 		try {
 			return SignedJWT.parse(signedToken);
 		} catch (ParseException e) {
+			log.error("Error on valide ------> {}", e.getCause());
 			e.printStackTrace();
 		}
 		return null;

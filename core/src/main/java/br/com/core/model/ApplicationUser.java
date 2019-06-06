@@ -10,12 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import br.com.core.model.abstractentity.AbstractEntity;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @Entity
 @Table(name ="user")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApplicationUser implements Serializable{
 
 	private static final long serialVersionUID = 1L;

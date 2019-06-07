@@ -1,5 +1,12 @@
 #gateway
-localhost:8080/gateway/course/api/v1/course
+localhost:8080/gateway/auth/api/v1/user
+
+localhost:8080/gateway/auth/login
+
+localhost:8080/gateway/course/api/v1/courses
 
 #micro
 localhost:8082/api/v1/course
+
+
+
